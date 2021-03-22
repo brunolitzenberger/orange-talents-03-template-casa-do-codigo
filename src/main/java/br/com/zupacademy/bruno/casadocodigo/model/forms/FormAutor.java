@@ -1,7 +1,5 @@
 package br.com.zupacademy.bruno.casadocodigo.model.forms;
 
-
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -12,16 +10,15 @@ public class FormAutor {
 
 	@NotEmpty
 	private String nome;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
-	
-	@Size(max=400)
+
+	@Size(max = 400)
 	@NotEmpty
 	private String descricao;
-	
-	
+
 	public FormAutor(String nome, String email, String descricao) {
 		super();
 		this.nome = nome;
@@ -29,11 +26,20 @@ public class FormAutor {
 		this.descricao = descricao;
 	}
 
-
-	public Autor novoAutor() {		
-		return new Autor(this.nome, this.email, this.descricao);		
+	public String getNome() {
+		return nome;
 	}
 
+	public String getEmail() {
+		return email;
+	}
 
-	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public Autor novoAutor() {
+		return new Autor(this.nome, this.email, this.descricao);
+	}
+
 }
