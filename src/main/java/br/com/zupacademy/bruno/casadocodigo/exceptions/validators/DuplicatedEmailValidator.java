@@ -1,4 +1,4 @@
-package br.com.zupacademy.bruno.casadocodigo.controllers;
+package br.com.zupacademy.bruno.casadocodigo.exceptions.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

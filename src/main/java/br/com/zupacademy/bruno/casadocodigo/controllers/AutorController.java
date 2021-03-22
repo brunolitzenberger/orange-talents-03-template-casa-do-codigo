@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.zupacademy.bruno.casadocodigo.exceptions.validators.DuplicatedEmailValidator;
 import br.com.zupacademy.bruno.casadocodigo.model.Autor;
 import br.com.zupacademy.bruno.casadocodigo.model.forms.FormAutor;
 import br.com.zupacademy.bruno.casadocodigo.repository.AutorRepository;
