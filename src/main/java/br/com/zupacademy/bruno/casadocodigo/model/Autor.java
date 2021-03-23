@@ -19,19 +19,18 @@ public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="nome", nullable=false)
+
+	@Column(name = "nome", nullable = false)
 	private String nome;
-	
-	@Column(name="email", nullable=false)
+
+	@Column(name = "email", nullable = false)
 	private String email;
-	
-	@Column(name="descricao", nullable=false, length=400)
+
+	@Column(name = "descricao", nullable = false, length = 400)
 	private String descricao;
-	
-	@Column(name="instante", nullable=false)	
+
+	@Column(name = "instante", nullable = false)
 	private LocalDateTime instante;
-	
 
 	@OneToMany
 	@JoinColumn(name = "autor_id")
@@ -39,9 +38,9 @@ public class Autor {
 
 	@Deprecated
 	public Autor() {
-		
+
 	}
-	
+
 	public Autor(String nome, String email, String descricao) {
 		this.nome = nome;
 		this.email = email;
@@ -49,17 +48,34 @@ public class Autor {
 		this.instante = LocalDateTime.now();
 	}
 
-
 	@Override
 	public String toString() {
 		return "Autor [id=" + id + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao + ", instante="
 				+ instante + "]";
 	}
-	
-	
-	
-	
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public LocalDateTime getInstante() {
+		return instante;
+	}
+
+	public List<Livro> getLivro() {
+		return livro;
+	}
 
 }

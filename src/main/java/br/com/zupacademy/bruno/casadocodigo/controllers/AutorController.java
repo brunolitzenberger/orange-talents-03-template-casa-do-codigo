@@ -1,5 +1,7 @@
 package br.com.zupacademy.bruno.casadocodigo.controllers;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -10,25 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zupacademy.bruno.casadocodigo.model.Autor;
 import br.com.zupacademy.bruno.casadocodigo.model.forms.FormAutor;
-import br.com.zupacademy.bruno.casadocodigo.repository.AutorRepository;
 
 @RestController
 @RequestMapping("/autor")
 public class AutorController {
 	
-	private AutorRepository autorRepository;	
+	@PersistenceContext
+	private EntityManager em;
 
-	public AutorController(AutorRepository autorRepository) {
-		this.autorRepository = autorRepository;
-	}
-	
 	@PostMapping
 	@Transactional
-	public String cadastrarAutor(@RequestBody @Valid FormAutor formAutor){		
-		Autor autor = formAutor.novoAutor();			
-		autorRepository.save(autor);
+	public String cadastrarAutor(@RequestBody @Valid FormAutor formAutor) {
+		Autor autor = formAutor.novoAutor();
+		em.persist(autor);
 		return autor.toString();
-		
+
 	}
-	
+
 }
