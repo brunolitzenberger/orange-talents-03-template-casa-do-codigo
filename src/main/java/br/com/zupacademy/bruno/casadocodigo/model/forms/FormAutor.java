@@ -4,6 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.bruno.casadocodigo.exceptions.validators.UniqueValue;
 import br.com.zupacademy.bruno.casadocodigo.model.Autor;
 
 public class FormAutor {
@@ -11,6 +12,7 @@ public class FormAutor {
 	@NotEmpty
 	private String nome;
 
+	@UniqueValue(domainClass = Autor.class, fieldName = "email", message = "Nome de autor já cadastrado")
 	@NotEmpty
 	@Email
 	private String email;

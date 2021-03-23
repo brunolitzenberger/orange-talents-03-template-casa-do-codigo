@@ -1,10 +1,14 @@
-package br.com.zupacademy.bruno.casadocodigo.controllers;
+package br.com.zupacademy.bruno.casadocodigo.model;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -17,6 +21,9 @@ public class Categoria {
 	@NotBlank
 	@Column(nullable = false, unique = true)
 	private String nome;
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Livro> livro;
 	
 	@Deprecated
 	public Categoria() {
