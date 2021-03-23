@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 @Entity
 public class Livro {
 
@@ -40,7 +41,7 @@ public class Livro {
 	@NotBlank
 	@Column(unique = true, nullable = false)
 	private String isbn;
-	
+
 	@NotNull
 	private LocalDate dataPublicacao;
 
@@ -52,6 +53,10 @@ public class Livro {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Autor autor;
 
+	public Livro() {
+		
+	}
+	
 	public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer numeroDePaginas, String isbn,
 			LocalDate dataPublicacao, Categoria categoria, Autor autor) {
 		this.titulo = titulo;
@@ -64,14 +69,20 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
-	
-	
 
 	@Override
 	public String toString() {
 		return "Livro [id=" + id + ", titulo=" + titulo + ", resumo=" + resumo + ", sumario=" + sumario + ", preco="
 				+ preco + ", numeroDePaginas=" + numeroDePaginas + ", isbn=" + isbn + ", dataPublicacao="
 				+ dataPublicacao + ", categoria=" + categoria + ", autor=" + autor + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
 	}
 
 }

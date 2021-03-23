@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import br.com.zupacademy.bruno.casadocodigo.model.Autor;
 import br.com.zupacademy.bruno.casadocodigo.model.Categoria;
@@ -42,9 +43,9 @@ public class FormLivro {
 	@NotBlank
 	private String isbn;
 	
-	@NotNull
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	@Future
+	@NotNull
+	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
 	private LocalDate dataPublicacao;
 
 	@NotNull
@@ -55,7 +56,7 @@ public class FormLivro {
 
 	public FormLivro(@NotBlank String titulo, @NotBlank @Max(500) String resumo, @NotBlank String sumario,
 			@NotBlank @Min(20) BigDecimal preco, @NotBlank @Min(100) Integer numeroDePaginas, @NotBlank String isbn,
-			@NotBlank @NotNull @Future LocalDate dataPublicacao, @NotNull  Long categoria_id, @NotNull Long autor_id) {
+			 @NotNull  Long categoria_id, @NotNull Long autor_id) {
 		super();
 		this.titulo = titulo;
 		this.resumo = resumo;
@@ -63,7 +64,6 @@ public class FormLivro {
 		this.preco = preco;
 		this.numeroDePaginas = numeroDePaginas;
 		this.isbn = isbn;
-		this.dataPublicacao = dataPublicacao;
 		this.categoria_id = categoria_id;
 		this.autor_id = autor_id;
 	}
