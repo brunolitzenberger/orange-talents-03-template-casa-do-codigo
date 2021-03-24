@@ -10,8 +10,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
-public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object>{
-
+public class ExistIdValidator implements ConstraintValidator<ExistId, Object>{
+	
 	private String domainAttribute;
 	private Class<?> klass;
 	
@@ -19,19 +19,18 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 	private EntityManager em;
 	
 	@Override
-	public void initialize(UniqueValue params) {
+	public void initialize(ExistId params) {
 		domainAttribute = params.fieldName();
 		klass = params.domainClass();
 	}
-	
+
 	@Override
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		Query query = em.createQuery("SELECT 1 FROM " + klass.getName() + " WHERE " +domainAttribute+ " = :value");
+	public boolean isValid(Object value, ConstraintValidatorContext context) {		
+		Query query = em.createQuery("SELECT 1 FROM " + klass.getName() + " WHERE "+ domainAttribute +" = :value");
 		query.setParameter("value", value);
-		List<?> list = query.getResultList();
-		Assert.state(list.size() <= 1, "");
-		
-		return list.isEmpty();
+		List<?> resultList = query.getResultList();
+		Assert.state(resultList.size() <= 1, "Não foram encontrados registros com este id");
+		return !resultList.isEmpty();
 	}
 
 }

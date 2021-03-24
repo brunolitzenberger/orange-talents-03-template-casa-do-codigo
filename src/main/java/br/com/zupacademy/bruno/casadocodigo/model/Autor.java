@@ -41,12 +41,15 @@ public class Autor {
 
 	}
 
+
 	public Autor(String nome, String email, String descricao) {
+		super();
 		this.nome = nome;
 		this.email = email;
 		this.descricao = descricao;
 		this.instante = LocalDateTime.now();
 	}
+
 
 	@Override
 	public String toString() {

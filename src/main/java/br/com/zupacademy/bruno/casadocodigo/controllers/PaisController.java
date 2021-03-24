@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.bruno.casadocodigo.model.Autor;
-import br.com.zupacademy.bruno.casadocodigo.model.forms.FormAutor;
+import br.com.zupacademy.bruno.casadocodigo.model.Pais;
+import br.com.zupacademy.bruno.casadocodigo.model.forms.FormPais;
 
 @RestController
-@RequestMapping("/autores")
-public class AutorController {
+@RequestMapping("/pais")
+public class PaisController {
 	
 	@PersistenceContext
 	private EntityManager em;
 
 	@PostMapping
 	@Transactional
-	public String cadastrarAutor(@RequestBody @Valid FormAutor formAutor) {
-		Autor autor = formAutor.novoAutor();
-		em.persist(autor);
-		return autor.toString();
-
+	public String criaPais(@RequestBody @Valid FormPais formPais) {
+		Pais novoPais = formPais.toModel();
+		em.persist(novoPais);
+		return novoPais.toString();
 	}
+	
 
 }

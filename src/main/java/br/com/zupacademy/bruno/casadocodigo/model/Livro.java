@@ -54,11 +54,13 @@ public class Livro {
 	private Autor autor;
 
 	public Livro() {
-		
+
 	}
-	
-	public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer numeroDePaginas, String isbn,
-			LocalDate dataPublicacao, Categoria categoria, Autor autor) {
+
+	public Livro(@NotBlank String titulo, @NotBlank String resumo, String sumario, @NotNull @Min(20) BigDecimal preco,
+			@NotNull @Min(100) Integer numeroDePaginas, @NotBlank String isbn, @NotNull LocalDate dataPublicacao,
+			@NotNull Categoria categoria, @NotNull Autor autor) {
+		super();
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.sumario = sumario;

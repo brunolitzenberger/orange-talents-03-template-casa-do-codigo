@@ -7,25 +7,23 @@ import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.bruno.casadocodigo.model.Autor;
-import br.com.zupacademy.bruno.casadocodigo.model.forms.FormAutor;
+import br.com.zupacademy.bruno.casadocodigo.model.Livro;
+import br.com.zupacademy.bruno.casadocodigo.model.forms.FormLivro;
 
 @RestController
-@RequestMapping("/autores")
-public class AutorController {
+public class NovoLivroController {
 	
 	@PersistenceContext
 	private EntityManager em;
 
-	@PostMapping
+	@PostMapping("/livros")
 	@Transactional
-	public String cadastrarAutor(@RequestBody @Valid FormAutor formAutor) {
-		Autor autor = formAutor.novoAutor();
-		em.persist(autor);
-		return autor.toString();
+	public String create(@RequestBody @Valid FormLivro formLivro) {
+		Livro livro = formLivro.novoLivro(em);
+		em.persist(livro);
+		return livro.toString();
 
 	}
 
