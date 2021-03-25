@@ -22,7 +22,7 @@ public class ListaLivroController {
 
 	@GetMapping("/livros")
 	public ResponseEntity<List<ListaLivroDTO>> list() {
-		List<Livro> resultList = em.createQuery("SELECT L FROM Livro L").getResultList();
+		List<Livro> resultList = em.createQuery("SELECT L FROM Livro L", Livro.class).getResultList();
 		if (resultList.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

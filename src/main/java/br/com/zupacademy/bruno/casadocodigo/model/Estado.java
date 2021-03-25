@@ -19,6 +19,11 @@ public class Estado {
 	
 	@ManyToOne
 	private Pais pais;
+	
+	@Deprecated
+	public Estado() {
+		
+	}
 
 	public Estado(String nome, Pais pais) {
 		super();
@@ -31,4 +36,10 @@ public class Estado {
 		return "Estado [id=" + id + ", nome=" + nome + ", pais=" + pais + "]";
 	}
 
+
+	public boolean pertenceAPais(Pais pais) {
+		return this.pais.equals(pais);
+	}
+	
+	
 }

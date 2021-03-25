@@ -15,7 +15,7 @@ import br.com.zupacademy.bruno.casadocodigo.model.forms.FormAutor;
 
 @RestController
 @RequestMapping("/autores")
-public class AutorController {
+public class NovoAutorController {
 	
 	@PersistenceContext
 	private EntityManager em;

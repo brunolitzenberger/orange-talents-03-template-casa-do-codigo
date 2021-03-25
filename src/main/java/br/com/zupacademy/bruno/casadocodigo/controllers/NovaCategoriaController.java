@@ -10,23 +10,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.bruno.casadocodigo.model.Pais;
-import br.com.zupacademy.bruno.casadocodigo.model.forms.FormPais;
+import br.com.zupacademy.bruno.casadocodigo.model.Categoria;
+import br.com.zupacademy.bruno.casadocodigo.model.forms.FormCategoria;
 
 @RestController
-@RequestMapping("/pais")
-public class PaisController {
+@RequestMapping("/categorias")
+public class NovaCategoriaController {
 	
 	@PersistenceContext
 	private EntityManager em;
-
+	
 	@PostMapping
 	@Transactional
-	public String criaPais(@RequestBody @Valid FormPais formPais) {
-		Pais novoPais = formPais.toModel();
-		em.persist(novoPais);
-		return novoPais.toString();
+	public String create(@RequestBody @Valid FormCategoria formCategoria) {
+		Categoria categoria = formCategoria.toModel();
+		em.persist(categoria);
+		return categoria.toString();		
 	}
-	
 
 }

@@ -18,7 +18,7 @@ import br.com.zupacademy.bruno.casadocodigo.model.forms.FormEstado;
 
 @RestController
 @RequestMapping("/estados")
-public class EstadoController {
+public class NovoEstadoController {
 	
 	@Autowired
 	private EntityManager em;
